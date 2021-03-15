@@ -1,0 +1,72 @@
+/** 样式、变量/方法 **/
+
+/* 尺寸大小 */
+$font_lg: 18px;
+$font_base: 16px;
+$font_sm: 14px;
+
+
+/* 颜色 */
+$color_font: #333;
+$color_active: #EAA34C;
+$color_gray: #F8F8F8;
+
+
+/* 设置宽高 */
+@mixin setBox($width: 100%, $height: 100%) {
+	width: $width;
+	height: $height;
+}
+
+/*  flex布局 */
+@mixin flexBox($just: center, $align: center) {
+	display: flex;
+	justify-content: $just;
+	align-items: $align;
+}
+
+/* 下 1像素边框 */
+@mixin border_bottom ($color: #eee) {
+	position: relative;
+	width: 100%;
+	&::before {
+		content: '';
+		width: 100%;
+		height: 1px;
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		background: $color;
+		transform: scaleY(.5);
+	}
+}
+/* 右 1像素边框 */
+@mixin border_right ($color: #eee) {
+	position: relative;
+	width: 100%;
+	&::before {
+		content: '';
+		width: 1px;
+		height: 100%;
+		position: absolute;
+		right: 0;
+		bottom: 0;
+		background: $color;
+		transform: scaleX(.5);
+	}
+}
+
+/* 溢出隐藏... */
+@mixin ellipsis ($clamp: 1) {
+    @if $clamp == 1 {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: no-wrap;
+    } @else {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: $clamp
+    }
+}
